@@ -1,29 +1,24 @@
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Build Status](https://travis-ci.org/bsamseth/cpp-project.svg?branch=master)](https://travis-ci.org/bsamseth/cpp-project)
-[![Build status](https://ci.appveyor.com/api/projects/status/g9bh9kjl6ocvsvse/branch/master?svg=true)](https://ci.appveyor.com/project/bsamseth/cpp-project/branch/master)
-[![Coverage Status](https://coveralls.io/repos/github/bsamseth/cpp-project/badge.svg?branch=master)](https://coveralls.io/github/bsamseth/cpp-project?branch=master)
-[![codecov](https://codecov.io/gh/bsamseth/cpp-project/branch/master/graph/badge.svg)](https://codecov.io/gh/bsamseth/cpp-project)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/eb004322b0d146239a57eb242078e179)](https://www.codacy.com/app/bsamseth/cpp-project?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bsamseth/cpp-project&amp;utm_campaign=Badge_Grade)
-[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/bsamseth/cpp-project.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bsamseth/cpp-project/context:cpp)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/bsamseth/cpp-project.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bsamseth/cpp-project/alerts/)
-[![license](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://github.com/bsamseth/cpp-project/blob/master/LICENSE)
-[![Lines of Code](https://tokei.rs/b1/github/bsamseth/cpp-project)](https://github.com/Aaronepower/tokei)
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/bsamseth/cpp-project.svg)](http://isitmaintained.com/project/bsamseth/cpp-project "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/bsamseth/cpp-project.svg)](http://isitmaintained.com/project/bsamseth/cpp-project "Percentage of issues still open")
-
-# Boiler plate for C++ projects
-
-This is a boiler plate for C++ projects. What you get:
-
--   Sources, headers and mains separated in distinct folders
--   Use of modern [CMake](https://cmake.org/) for much easier compiling
--   Setup for tests using [doctest](https://github.com/onqtam/doctest)
--   Continuous testing with [Travis-CI](https://travis-ci.org/), [Appveyor](https://www.appveyor.com) and [GitHub Actions](https://github.com/features/actions), with support for C++17.
--   Code coverage reports, including automatic upload to [Coveralls.io](https://coveralls.io/) and/or [Codecov.io](https://codecov.io)
--   Code documentation with [Doxygen](http://www.stack.nl/~dimitri/doxygen/)
-
-![Demo of usage](https://i.imgur.com/foymVfy.gif)
-
+A very brief description of the algorithm/data structure you implemented. I mean, what
+problem or task does it address.
+• The O() running time bounds of your implementation: if it is not as good as the running
+time bound from the resources you use, explain why you could not attain those bounds (it
+may be a very valid excuse: perhaps getting as far as you did is a project on its own!). Note,
+some algorithms have complicated O() bounds that are hard to see in practice (eg., intricate
+integer factorization methods), but you should do your best to explain what is going on here
+anyway.
+• A list of all resources you ended up using, you might use more than what was in your proposal.
+But even if you didn’t use any more resources, I still want the ones from your proposal listed
+1
+here.
+• Instructions for compiling and running, including how to run the tests you include (more on
+this below).
+• A description of any peculiarities or assumptions you had to make to get things to work.
+Example: if you choose a geometric algorithm then you might want to state something along
+the lines of “I only got it working if no three points in the input are collinear”. Another
+Example: if it crashes or produces the wrong output in certain cases and you couldn’t hunt
+the bug down, let me know.
+• A summary of all other files included in your project.
+• An explanation of how to interpret the output from your program
 ## Structure
 ``` text
 .
@@ -70,31 +65,3 @@ Example:
 > make coverage  # Generate a coverage report.
 > make doc       # Generate html documentation.
 ```
-
-## .gitignore
-
-The [.gitignore](.gitignore) file is a copy of the [Github C++.gitignore file](https://github.com/github/gitignore/blob/master/C%2B%2B.gitignore),
-with the addition of ignoring the build directory (`build/`).
-
-## Services
-
-If the repository is activated with Travis-CI, then unit tests will be built and executed on each commit.
-The same is true if the repository is activated with Appveyor.
-
-If the repository is activated with Coveralls/Codecov, then deployment to Travis will also calculate code coverage and
-upload this to Coveralls.io and/or Codecov.io
-
-## Setup
-
-### Using the GitHub template
-Click the `Use this template` button to make a new repository from this template.
-
-### From command line
-When starting a new project, you probably don't want the history of this repository. To start fresh you can use
-the [setup script](setup.sh) as follows:
-``` bash
-> git clone https://github.com/bsamseth/cpp-project  # Or use ssh-link if you like.
-> cd cpp-project
-> bash setup.sh
-```
-The result is a fresh Git repository with one commit adding all files from the boiler plate.
