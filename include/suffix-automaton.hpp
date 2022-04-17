@@ -9,6 +9,7 @@
 #define vs std::vector<std::string>
 #define vi std::vector<int>
 #define dqi std::deque<int>
+#define MAX_CHAR 126
 
 /**
  * @brief This class implements a suffix automaton.

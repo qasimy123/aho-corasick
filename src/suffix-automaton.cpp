@@ -13,7 +13,7 @@ Automaton::Automaton(const std::vector<std::string>& s)
     for (size_t i = 0; i < n; ++i) {
         max_len += s[i].size();
     }
-    this->trie = std::vector<std::vector<int>>(max_len, std::vector<int>(26, -1));
+    this->trie = std::vector<std::vector<int>>(max_len, std::vector<int>(MAX_CHAR, -1));
     this->outputs = std::vector<std::string>(max_len, "");
     this->failureLink = std::vector<int>(max_len, -1);
     this->buildTrie();
@@ -26,10 +26,10 @@ vs Automaton::match(const std::string& s)
     size_t n = s.size();
     vs result;
     for (size_t i = 0; i < n; i++) {
-        while (go(state, s[i] - 97) == -1) {
+        while (go(state, s[i]) == -1) {
             state = fail(state);
         }
-        state = go(state, s[i] - 97);
+        state = go(state, s[i]);
         if (output(state) != "") {
             size_t begin = i - output(state).size() + 1;
             size_t end = i;
@@ -65,7 +65,7 @@ void Automaton::buildTrie()
         extend(s, &newState);
     }
 
-    for (char i = 0; i < 26; ++i) {
+    for (char i = 0; i < MAX_CHAR; ++i) {
         if (go(0, i) == -1) {
             this->trie[0][static_cast<size_t>(i)] = 0;
         }
@@ -78,13 +78,13 @@ void Automaton::extend(const std::string& s, int* newState)
     int state = 0;
     size_t j = 0;
 
-    while (go(state, s[j] - 97) != -1) {
-        state = go(state, s[j] - 'a');
+    while (go(state, s[j]) != -1) {
+        state = go(state, s[j]);
         j++;
     }
     for (size_t i = j; i < s.size(); ++i) {
         *newState = *newState + 1;
-        this->trie[static_cast<size_t>(state)][static_cast<size_t>(s[i] - 'a')] = *newState;
+        this->trie[static_cast<size_t>(state)][static_cast<size_t>(s[i])] = *newState;
         state = *newState;
     }
     this->outputs[static_cast<size_t>(state)] = s;
@@ -94,7 +94,7 @@ void Automaton::buildFailure()
 {
     std::cout << "Building failure..." << std::endl;
     dqi q;
-    for (char i = 0; i < 26; ++i) {
+    for (char i = 0; i < MAX_CHAR; ++i) {
         int s = go(0, i);
         if (s != 0) {
             q.push_back(s);
@@ -105,7 +105,7 @@ void Automaton::buildFailure()
     while (!q.empty()) {
         int r = q.front();
         q.pop_front();
-        for (char i = 0; i < 26; ++i) {
+        for (char i = 0; i < MAX_CHAR; ++i) {
             int s = go(r, i);
             if (s != -1) {
                 q.push_back(s);
