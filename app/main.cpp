@@ -15,6 +15,8 @@
  * Simple main program that demontrates how access
  * CMake definitions (here the version number) from source code.
  */
-int main() {
-  std::cout << "C++ Boiler Plate v" << std::endl;
+int main()
+{
+    Automaton a({ "qasim", "aniqa", "oqd" });
+    a.match("oqdowdqasimaniqaqasimaniqasimoqwd");
 }

@@ -3,5 +3,7 @@
 
 TEST_CASE("complicated integration tests could be here")
 {
-  CHECK(1 == true);
+  Automaton a({"abc", "abcd", "ab"});
+  CHECK(a.match("abcd"));
+  
 }

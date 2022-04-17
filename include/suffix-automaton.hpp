@@ -5,8 +5,10 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <deque>
 #define vs std::vector<std::string>
 #define vi std::vector<int>
+#define dqi std::deque<int>
 
 /**
  * @brief This class implements a suffix automaton.
@@ -35,25 +37,27 @@ private:
     /**
      * @brief The suffix tree.
      */
-    std::vector<vi> tree;
+    std::vector<vi> trie;
+    vi failureLink;
     /**
-     * @brief The suffix links.
+     * @brief Outputs of the automaton.
      */
-    vi links;
-    /**
-     * @brief The number of strings.
-     */
-    int n;
-    /**
-     * @brief The number of characters in the longest string.
-     */
-    int m;
+    vs outputs;
+
     /**
      * @brief Build the suffix tree.
      */
     void build();
     /**
-     * @brief Build the suffix links.
+     * @brief Build the failure links.
      */
-    void buildLinks();
+    void buildFailure();
+    /**
+     * @brief Build the trie.
+     */
+    void buildTrie();
+    int go(int state, char c);
+    int fail(int state);
+    std::string output(int state);
+    void extend(const std::string& s, int* newState);
 };
