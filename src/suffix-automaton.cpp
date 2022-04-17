@@ -2,7 +2,12 @@
 
 Automaton::Automaton(const std::vector<std::string>& s)
 {
+    // Sort the strings by length.
     this->strings = s;
+    std::sort(this->strings.begin(), this->strings.end(),
+        [](const std::string& a, const std::string& b) {
+            return a.size() < b.size();
+        });
     size_t n = s.size();
     size_t max_len = 1;
     for (size_t i = 0; i < n; ++i) {
@@ -15,21 +20,24 @@ Automaton::Automaton(const std::vector<std::string>& s)
     this->buildFailure();
 }
 
-bool Automaton::match(const std::string& s)
+vs Automaton::match(const std::string& s)
 {
     int state = 0;
     size_t n = s.size();
-
+    vs result;
     for (size_t i = 0; i < n; i++) {
         while (go(state, s[i] - 97) == -1) {
             state = fail(state);
         }
         state = go(state, s[i] - 97);
         if (output(state) != "") {
-            std::cout << "output: " << output(state) << " i: " << i << std::endl;
+            size_t begin = i - output(state).size() + 1;
+            size_t end = i;
+            std::cout << " begin: " << begin << " end: " << end << " pattern: " << s.substr(begin, end - begin + 1) << std::endl;
+            result.push_back(output(state));
         }
     }
-    return true;
+    return result;
 }
 
 int Automaton::go(int state, char c)
@@ -50,7 +58,7 @@ std::string Automaton::output(int state)
 void Automaton::buildTrie()
 {
     std::cout << "Building trie..." << std::endl;
-    int newState = 0;
+    int newState = 1;
 
     for (size_t i = 0; i < this->strings.size(); ++i) {
         std::string s = this->strings[i];
@@ -62,16 +70,16 @@ void Automaton::buildTrie()
             this->trie[0][static_cast<size_t>(i)] = 0;
         }
     }
-    
 }
 
 void Automaton::extend(const std::string& s, int* newState)
 {
+    std::cout << "Extending " << s << std::endl;
     int state = 0;
     size_t j = 0;
 
     while (go(state, s[j] - 97) != -1) {
-        state = go(state, s[j] - 97);
+        state = go(state, s[j] - 'a');
         j++;
     }
     for (size_t i = j; i < s.size(); ++i) {
@@ -106,9 +114,8 @@ void Automaton::buildFailure()
                     state = fail(state);
                 }
                 this->failureLink[static_cast<size_t>(s)] = go(state, i);
-                this->outputs[static_cast<size_t>(s)] = this->outputs[static_cast<size_t>(s)]+this->outputs[static_cast<size_t>(fail(s))];
+                this->outputs[static_cast<size_t>(s)] = this->outputs[static_cast<size_t>(s)] + this->outputs[static_cast<size_t>(fail(s))];
             }
         }
     }
-    
 }

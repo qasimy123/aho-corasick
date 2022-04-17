@@ -3,7 +3,6 @@
 
 TEST_CASE("complicated integration tests could be here")
 {
-  Automaton a({"abc", "abcd", "ab"});
-  CHECK(a.match("abcd"));
-  
+    Automaton a({ "abc", "abcd", "ab" });
+    CHECK(a.match("abc") == std::vector<std::string>({ "ab", "abc" }));
 }

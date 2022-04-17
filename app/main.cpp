@@ -17,6 +17,6 @@
  */
 int main()
 {
-    Automaton a({ "qasim", "aniqa", "oqd" });
+    Automaton a({ "qasim", "q", "asi" });
     a.match("oqdowdqasimaniqaqasimaniqasimoqwd");
 }
