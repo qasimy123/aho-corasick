@@ -14,10 +14,12 @@ FSM::FSM(const std::vector<std::string>& s)
         max_len += s[i].size();
     }
     this->trie = std::vector<std::vector<int>>(max_len, std::vector<int>(MAX_CHAR, -1));
-    this->outputs = std::vector<std::string>(max_len, "");
+    // initialize output to be unordered_map of empty vector
+    this->outputs = std::unordered_map<int, std::vector<std::string>>();
     this->failureLink = std::vector<int>(max_len, -1);
     this->buildTrie();
     this->buildFailure();
+    std::cout << "FSM built" << std::endl;
 }
 
 vs FSM::match(const std::string& s)
@@ -30,11 +32,10 @@ vs FSM::match(const std::string& s)
             state = fail(state);
         }
         state = go(state, s[i]);
-        if (output(state) != "") {
-            size_t begin = i - output(state).size() + 1;
-            size_t end = i;
-            std::cout << " begin: " << begin << " end: " << end << " pattern: " << s.substr(begin, end - begin + 1) << std::endl;
-            result.push_back(output(state));
+        if (output(state).size() > 0) {
+            for (auto& o : output(state)) {
+                result.push_back(o);
+            }
         }
     }
     return result;
@@ -50,15 +51,19 @@ int FSM::fail(int state)
     return this->failureLink[static_cast<size_t>(state)];
 }
 
-std::string FSM::output(int state)
+vs FSM::output(int state)
 {
-    return this->outputs[static_cast<size_t>(state)];
+    // if state is not in the map, return empty vector
+    if (this->outputs.find(state) == this->outputs.end()) {
+        return vs();
+    }
+    return this->outputs[state];
 }
 
 void FSM::buildTrie()
 {
     std::cout << "Building trie..." << std::endl;
-    int newState = 1;
+    int newState = 0;
 
     for (size_t i = 0; i < this->strings.size(); ++i) {
         std::string s = this->strings[i];
@@ -87,7 +92,7 @@ void FSM::extend(const std::string& s, int* newState)
         this->trie[static_cast<size_t>(state)][static_cast<size_t>(s[i])] = *newState;
         state = *newState;
     }
-    this->outputs[static_cast<size_t>(state)] = s;
+    this->outputs.emplace(state, vs { s });
 }
 
 void FSM::buildFailure()
@@ -114,7 +119,13 @@ void FSM::buildFailure()
                     state = fail(state);
                 }
                 this->failureLink[static_cast<size_t>(s)] = go(state, i);
-                this->outputs[static_cast<size_t>(s)] = this->outputs[static_cast<size_t>(s)] + this->outputs[static_cast<size_t>(fail(s))];
+                if (this->outputs.find(s) != this->outputs.end()) {
+                    for (auto& o : this->outputs[fail(s)]) {
+                        this->outputs[s].push_back(o);
+                    }
+                } else {
+                    this->outputs.emplace(s, this->outputs[fail(s)]);
+                }
             }
         }
     }

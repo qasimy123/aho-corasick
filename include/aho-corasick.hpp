@@ -43,7 +43,7 @@ private:
     /**
      * @brief Outputs of the FSM.
      */
-    vs outputs;
+    std::unordered_map<int, vs> outputs;
 
     /**
      * @brief Build the failure links.
@@ -71,7 +71,7 @@ private:
      * @param state The state.
      * @return The output of the given state.
      */
-    std::string output(int state);
+    vs output(int state);
     /**
      * @brief Adds a string to the trie.
      * @param s The string to be added.
