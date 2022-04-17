@@ -83,7 +83,6 @@ void FSM::buildTrie()
 
 void FSM::extend(const std::string& s, int* newState)
 {
-    std::cout << "Extending " << s << std::endl;
     int state = 0;
     size_t j = 0;
 
