@@ -1,6 +1,6 @@
-#include "suffix-automaton.hpp"
+#include "aho-corasick.hpp"
 
-Automaton::Automaton(const std::vector<std::string>& s)
+FSM::FSM(const std::vector<std::string>& s)
 {
     // Sort the strings by length.
     this->strings = s;
@@ -20,7 +20,7 @@ Automaton::Automaton(const std::vector<std::string>& s)
     this->buildFailure();
 }
 
-vs Automaton::match(const std::string& s)
+vs FSM::match(const std::string& s)
 {
     int state = 0;
     size_t n = s.size();
@@ -40,22 +40,22 @@ vs Automaton::match(const std::string& s)
     return result;
 }
 
-int Automaton::go(int state, char c)
+int FSM::go(int state, char c)
 {
     return this->trie[static_cast<size_t>(state)][static_cast<size_t>(c)];
 }
 
-int Automaton::fail(int state)
+int FSM::fail(int state)
 {
     return this->failureLink[static_cast<size_t>(state)];
 }
 
-std::string Automaton::output(int state)
+std::string FSM::output(int state)
 {
     return this->outputs[static_cast<size_t>(state)];
 }
 
-void Automaton::buildTrie()
+void FSM::buildTrie()
 {
     std::cout << "Building trie..." << std::endl;
     int newState = 1;
@@ -72,7 +72,7 @@ void Automaton::buildTrie()
     }
 }
 
-void Automaton::extend(const std::string& s, int* newState)
+void FSM::extend(const std::string& s, int* newState)
 {
     std::cout << "Extending " << s << std::endl;
     int state = 0;
@@ -90,7 +90,7 @@ void Automaton::extend(const std::string& s, int* newState)
     this->outputs[static_cast<size_t>(state)] = s;
 }
 
-void Automaton::buildFailure()
+void FSM::buildFailure()
 {
     std::cout << "Building failure..." << std::endl;
     dqi q;

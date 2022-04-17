@@ -12,21 +12,21 @@
 #define MAX_CHAR 126
 
 /**
- * @brief This class implements a suffix automaton.
+ * @brief This class implements the aho-corasick algorithm.
  *
  */
-class Automaton {
+class FSM {
 public:
     /**
-     * @brief Construct a new Automaton object.
+     * @brief Construct a new FSM object.
      * @param strings The strings to be processed.
      */
-    Automaton(const vs& strings);
+    FSM(const vs& strings);
     /**
-     * @brief Match a string against the automaton.
+     * @brief Match a string against the FSM.
      * @param string The string to be matched.
-     * @return true If the string matches the automaton.
-     * @return false If the string does not match the automaton.
+     * @return true If the string matches the FSM.
+     * @return false If the string does not match the FSM.
      */
     vs match(const std::string& string);
 
@@ -36,19 +36,15 @@ private:
      */
     vs strings;
     /**
-     * @brief The suffix tree.
+     * @brief The trie that holds the patterns.
      */
     std::vector<vi> trie;
     vi failureLink;
     /**
-     * @brief Outputs of the automaton.
+     * @brief Outputs of the FSM.
      */
     vs outputs;
 
-    /**
-     * @brief Build the suffix tree.
-     */
-    void build();
     /**
      * @brief Build the failure links.
      */

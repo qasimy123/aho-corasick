@@ -9,7 +9,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "suffix-automaton.hpp"
+#include "aho-corasick.hpp"
 
 /*
  * Simple main program that demontrates how access
@@ -17,6 +17,6 @@
  */
 int main()
 {
-    Automaton a({ "qas()im", "q", "asi", "BOB" });
+    FSM a({ "qas()im", "q", "asi", "BOB" });
     a.match("oqdBOBowdqas()imaniqaqasimaniqasimoqwd");
 }
