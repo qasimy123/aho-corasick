@@ -19,7 +19,12 @@ class FSM {
 public:
     /**
      * @brief Construct a new FSM object.
-     * @param strings The strings to be processed.
+     * @param strings The strings to be processed. 
+     * Must be ASCII strings with no control characters.
+     * The combined length of all strings must also be less than INT_MAX-1.
+     * Tested upto 1000000 characters.
+     * The number of strings must be less than INT_MAX-1.
+     * Tested upto 1000000 strings.
      */
     FSM(const vs& strings);
     /**
