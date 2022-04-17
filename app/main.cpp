@@ -1,22 +1,23 @@
-// Executables must have the following defined if the library contains
-// doctest definitions. For builds with this disabled, e.g. code shipped to
-// users, this can be left out.
-#ifdef ENABLE_DOCTEST_IN_LIBRARY
-#define DOCTEST_CONFIG_IMPLEMENT
-#include "doctest/doctest.h"
-#endif
-
+#include "aho-corasick.hpp"
+#include <fstream>
 #include <iostream>
 #include <stdlib.h>
 
-#include "aho-corasick.hpp"
-
 /*
- * Simple main program that demontrates how access
- * CMake definitions (here the version number) from source code.
+ * Simple main program that demontrates the usage of the Aho-Corasick on
+ * the full script of Shrek 3. Src: https://github.com/mackenziedg/shrek/blob/master/data/shrek3.txt
  */
 int main()
 {
-    FSM a({ "qas()im", "q", "asi", "BOB" });
-    a.match("oqdBOBowdqas()imaniqaqasimaniqasimoqwd");
+    std::ifstream file("shrek3.txt");
+    std::string line;
+    std::string result;
+    FSM shrek({ "cry", "Wow", "Magic" });
+    while (std::getline(file, line)) {
+        result += line;
+    }
+    vs results = shrek.match(result);
+    for (auto& r : results) {
+        std::cout << "Match: " << r << std::endl;
+    }
 }
