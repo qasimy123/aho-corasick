@@ -1,4 +1,6 @@
 #include "aho-corasick.hpp"
+#include <cassert>
+#include <climits>
 
 FSM::FSM(const std::vector<std::string>& s)
 {
