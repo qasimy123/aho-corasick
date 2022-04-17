@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.3.23.14)
 
 # List all files containing tests. (Change as needed)
 set(TESTFILES        # All .cpp files in tests/
