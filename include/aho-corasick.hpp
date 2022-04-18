@@ -9,7 +9,7 @@
 #define vs std::vector<std::string>
 #define vi std::vector<int>
 #define dqi std::deque<int>
-#define MAX_CHAR 126
+#define MAX_CHAR 127
 
 /**
  * @brief This class implements the aho-corasick algorithm.

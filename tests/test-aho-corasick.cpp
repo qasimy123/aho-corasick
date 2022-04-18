@@ -38,7 +38,7 @@ TEST_CASE("Test many patterns")
     }
     FSM a(patterns);
     std::string s = "";
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 2000000; i++) {
         s += rand() % 26 + 'a';
     }
     vs results = a.match(s);

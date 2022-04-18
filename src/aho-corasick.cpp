@@ -6,10 +6,6 @@ FSM::FSM(const std::vector<std::string>& s)
 {
     // Sort the strings by length.
     this->strings = s;
-    std::sort(this->strings.begin(), this->strings.end(),
-        [](const std::string& a, const std::string& b) {
-            return a.size() < b.size();
-        });
     size_t n = s.size();
     size_t max_len = 10;
     for (size_t i = 0; i < n; ++i) {
@@ -20,7 +16,7 @@ FSM::FSM(const std::vector<std::string>& s)
     this->trie = std::vector<std::vector<int>>(max_len, std::vector<int>(MAX_CHAR, -1));
     // initialize output to be unordered_map of empty vector
     this->outputs = std::unordered_map<int, std::vector<std::string>>();
-    this->failureLink = std::vector<int>(max_len, -1);
+    this->failureLink = std::vector<int>(max_len, 0);
     this->buildTrie();
     this->buildFailure();
     std::cout << "FSM built" << std::endl;
