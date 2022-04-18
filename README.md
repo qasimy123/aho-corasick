@@ -2,6 +2,8 @@
 
 The Aho–Corasick algorithm is a dictionary-matching algorithm invented by Alfred V. Aho and Margaret J. Corasick. It constructs a finite state machine that uses a trie of all patterns to quickly finds all matches instead of backtracking to check all possible matches as the naive algorithm does. This matching is done by keeping track of partial matches and using this information to speed up the search process.
 
+[![Coverage Status](https://coveralls.io/repos/github/qasimy123/aho-corasick/badge.svg?branch=master)](https://coveralls.io/github/qasimy123/aho-corasick?branch=master) [![Build Status](https://app.travis-ci.com/qasimy123/aho-corasick.svg?branch=master)](https://app.travis-ci.com/qasimy123/aho-corasick)
+
 ## Time Complexity
 
 The algorithm takes O(|patterns|) time to build the finite state machine, and the algorithm takes O(|text|) time to search the text for matches.
