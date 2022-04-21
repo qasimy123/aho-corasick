@@ -3,7 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
-#define PROMPT "Enter text to search or 's' to search Shrek 3"
+#define PROMPT "Enter text to search or 's' to search Shrek 3: "
 /*
  * Simple main program that demontrates the usage of the Aho-Corasick on
  * the full script of Shrek 3. Src: https://github.com/mackenziedg/shrek/blob/master/data/shrek3.txt
