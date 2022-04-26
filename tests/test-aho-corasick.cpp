@@ -43,3 +43,13 @@ TEST_CASE("Test many patterns")
     }
     vs results = a.match(s);
 }
+
+TEST_CASE("Test substring patterns")
+{
+    FSM a({ "A", "AG","C","CAA","GAG","GC","GCA"});
+    vs results = a.match("GCAA");
+    for (auto& r : results) {
+        std::cout << r << std::endl;
+    }
+    CHECK(results == vs({ "GC", "C","GCA","A","CAA","A"}));
+}

@@ -20,7 +20,8 @@ Boilerplate from:
 https://github.com/bsamseth/cpp-project
 
 ## Structure
-To main program is a simple interactive shell that allows the user to enter patterns and text to search. The program then prints out the matches. YOu can also search within the complet
+To main program is a simple interactive shell that allows the user to enter patterns and text to search. The program then prints out the matches. You can also search the patterns within the full script for shrek 3.
+
 The source code for Aho-Corasick is in the `src` directory.
 I also used the same code for 3 kattis problems, those can be found in the `kattis` directory.
 They only override the match method for problem specific purposes.
