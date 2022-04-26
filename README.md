@@ -10,10 +10,13 @@ The algorithm takes O(|patterns|) time to build the finite state machine where |
 
 ## References
 
-[1]“Elsevier Enhanced Reader.” https://reader.elsevier.com/reader/sd/pii/S0304397509002370?token=928633D737A0E588F2ED7F3E430D0350097DD01B4397486F60CDA25DA8C1A7EBE3EF2B82C716B4156B053E6CA8716C66&originRegion=us-east-1&originCreation=20220416003051 (accessed Apr. 15, 2022).
-[2]A. V. Aho and M. J. Corasick, “Efficient string matching: an aid to bibliographic search,” Commun. ACM, vol. 18, no. 6, pp. 333–340, Jun. 1975, doi: 10.1145/360825.360855.
-[3]M. Crochemore and C. Hancart, “Automata for Matching Patterns,” in Handbook of Formal Languages, G. Rozenberg and A. Salomaa, Eds. Berlin, Heidelberg: Springer Berlin Heidelberg, 1997, pp. 399–462. doi: 10.1007/978-3-662-07675-0_9.
-[4]Tharaka Dimalsha, Aho - Corasick Algorithm, (Apr. 18, 2021). Accessed: Apr. 15, 2022. [Online Video]. Available: https://www.youtube.com/watch?v=m3PDS3rxhoc
+[1] “Elsevier Enhanced Reader.” https://reader.elsevier.com/reader/sd/pii/S0304397509002370?token=928633D737A0E588F2ED7F3E430D0350097DD01B4397486F60CDA25DA8C1A7EBE3EF2B82C716B4156B053E6CA8716C66&originRegion=us-east-1&originCreation=20220416003051 (accessed Apr. 15, 2022).
+
+[2] A. V. Aho and M. J. Corasick, “Efficient string matching: an aid to bibliographic search,” Commun. ACM, vol. 18, no. 6, pp. 333–340, Jun. 1975, doi: 10.1145/360825.360855.
+
+[3] M. Crochemore and C. Hancart, “Automata for Matching Patterns,” in Handbook of Formal Languages, G. Rozenberg and A. Salomaa, Eds. Berlin, Heidelberg: Springer Berlin Heidelberg, 1997, pp. 399–462. doi: 10.1007/978-3-662-07675-0_9.
+
+[4] Tharaka Dimalsha, Aho - Corasick Algorithm, (Apr. 18, 2021). Accessed: Apr. 15, 2022. [Online Video]. Available: https://www.youtube.com/watch?v=m3PDS3rxhoc
 [5]Niema Moshiri, Advanced Data Structures: Aho-Corasick Automaton, (Apr. 26, 2020). Accessed: Apr. 15, 2022. [Online Video]. Available: https://www.youtube.com/watch?v=O7_w001f58c
 
 Boilerplate from:
